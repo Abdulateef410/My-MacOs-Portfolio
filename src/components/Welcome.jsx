@@ -48,7 +48,7 @@ const renderText = (text, className, baseWeight = 400) => {
         key={i}
         className={className}
         style={{ fontVariationSettings: `'wght' ${baseWeight}`}}>
-            {char === " " ? "\u00A0" : char}
+            {char}
 </span>
     ));
 };
