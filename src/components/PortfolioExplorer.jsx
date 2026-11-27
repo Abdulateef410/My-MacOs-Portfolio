@@ -12,6 +12,7 @@ const sections = [
 ];
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT?.trim();
+const CONTACT_REQUEST_TIMEOUT_MS = 45_000;
 
 const getProjectDetails = (project) => {
   const files = project.children ?? [];
@@ -132,12 +133,18 @@ const ContactSection = () => {
     submissionLock.current = true;
     setIsSubmitting(true);
     setFeedback(null);
+    const abortController = new AbortController();
+    const timeoutId = window.setTimeout(
+      () => abortController.abort(),
+      CONTACT_REQUEST_TIMEOUT_MS,
+    );
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         body: new FormData(form),
         headers: { Accept: "application/json" },
+        signal: abortController.signal,
       });
       const result = await response.json().catch(() => null);
 
@@ -161,11 +168,14 @@ const ContactSection = () => {
       setFeedback({
         type: "error",
         message:
-          error instanceof TypeError
-            ? "Unable to reach Formspree. Please check your connection and try again."
-            : error.message || "Your message could not be sent. Please try again.",
+          error?.name === "AbortError"
+            ? "The request timed out or was cancelled. Delivery status is unknown; check before retrying."
+            : error instanceof TypeError
+              ? "Unable to reach Formspree. Please check your connection and try again."
+              : error.message || "Your message could not be sent. Please try again.",
       });
     } finally {
+      window.clearTimeout(timeoutId);
       submissionLock.current = false;
       setIsSubmitting(false);
     }
@@ -263,6 +273,7 @@ const ContactSection = () => {
             type="text"
             placeholder="Your name"
             autoComplete="name"
+            disabled={isSubmitting}
             required
           />
         </div>
@@ -274,6 +285,7 @@ const ContactSection = () => {
             type="email"
             placeholder="you@example.com"
             autoComplete="email"
+            disabled={isSubmitting}
             required
           />
         </div>
@@ -284,6 +296,7 @@ const ContactSection = () => {
             name="message"
             placeholder="Write your message..."
             rows="4"
+            disabled={isSubmitting}
             required
           />
         </div>
