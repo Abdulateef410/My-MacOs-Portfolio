@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="card-blue" x1="15" y1="3" x2="50" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#94E8FF" />
+      <stop offset="0.45" stop-color="#48B9F5" />
+      <stop offset="1" stop-color="#1678E4" />
+    </linearGradient>
+    <linearGradient id="card-sheen" x1="32" y1="3" x2="32" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.48" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="card-person" x1="32" y1="15" x2="32" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="1" stop-color="#E7F8FF" />
+    </linearGradient>
+    <filter id="card-shadow" x="0" y="1" width="64" height="65" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#034B91" flood-opacity="0.3" />
+    </filter>
+    <clipPath id="card-clip">
+      <rect x="3" y="3" width="58" height="58" rx="14" />
+    </clipPath>
+  </defs>
+
+  <g filter="url(#card-shadow)">
+    <rect x="3" y="3" width="58" height="58" rx="14" fill="url(#card-blue)" />
+    <g clip-path="url(#card-clip)">
+      <path d="M3 18C3 9.7 9.7 3 18 3h28c8.3 0 15 6.7 15 15v13c-8.5 5.3-18.2 8-29 8-10.4 0-20.1-2.8-29-8V18Z" fill="url(#card-sheen)" />
+    </g>
+    <rect x="3.6" y="3.6" width="56.8" height="56.8" rx="13.4" stroke="#D2F5FF" stroke-opacity="0.92" stroke-width="1.2" />
+    <g fill="url(#card-person)" filter="drop-shadow(0 1px 1px #0C68B4)">
+      <circle cx="32" cy="23" r="9.2" />
+      <path d="M13.5 49.5c1-8.3 8.1-14.1 18.5-14.1s17.5 5.8 18.5 14.1v3.2c0 .9-.7 1.6-1.6 1.6H15.1c-.9 0-1.6-.7-1.6-1.6v-3.2Z" />
+    </g>
+  </g>
+</svg>
