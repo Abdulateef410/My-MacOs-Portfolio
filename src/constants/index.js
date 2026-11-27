@@ -94,7 +94,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "url",
           linkType: "live-demo",
-          href: "https://abdulateef410.github.io/Nike-website-repo/",
+          href: "https://nike-website-repo.vercel.app",
           position: "top-20 right-20",
         },
         {
@@ -142,7 +142,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "url",
           linkType: "live-demo",
-          href: "https://abdulateef410.github.io/Coffee-page/",
+          href: "https://coffee-chi-olive.vercel.app",
           position: "top-20 right-20",
         },
         {
