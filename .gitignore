@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+
+# Wallpaper originals — 6K PNG files exceed GitHub's 50 MB per-file limit
+# Responsive JPEG derivatives in /wallpapers/responsive/ are tracked instead
+public/images/wallpapers/*-6K.png
 
 # Editor directories and files
 .vscode/*
