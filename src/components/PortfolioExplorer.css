@@ -758,6 +758,10 @@
 }
 
 @media (max-height: 560px) {
+  .portfolio-explorer:not(.is-maximized) {
+    transform: translateX(-50%);
+  }
+
   .portfolio-explorer {
     top: calc(env(safe-area-inset-top, 0px) + 2.6rem);
     bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
@@ -772,5 +776,11 @@
 
   .portfolio-explorer.is-maximized {
     inset: calc(env(safe-area-inset-top, 0px) + 2.5rem) calc(env(safe-area-inset-right, 0px) + 0.35rem) calc(env(safe-area-inset-bottom, 0px) + 0.5rem) calc(env(safe-area-inset-left, 0px) + 0.35rem);
+  }
+}
+
+@media (max-height: 560px) and (min-width: 1100px) {
+  .portfolio-explorer:not(.is-maximized) {
+    transform: none;
   }
 }

@@ -127,6 +127,7 @@ const App = () => {
     const scheduleNextWallpaper = (delay = WALLPAPER_DISPLAY_DURATION) => {
       if (!isActive) return;
 
+      window.clearTimeout(displayTimer);
       displayTimer = window.setTimeout(async () => {
         if (document.hidden) return;
 

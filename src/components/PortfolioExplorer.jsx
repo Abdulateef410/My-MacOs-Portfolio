@@ -263,6 +263,7 @@ const ContactSection = () => {
             type="text"
             placeholder="Your name"
             autoComplete="name"
+            disabled={isSubmitting}
             required
           />
         </div>
@@ -274,6 +275,7 @@ const ContactSection = () => {
             type="email"
             placeholder="you@example.com"
             autoComplete="email"
+            disabled={isSubmitting}
             required
           />
         </div>
@@ -284,6 +286,7 @@ const ContactSection = () => {
             name="message"
             placeholder="Write your message..."
             rows="4"
+            disabled={isSubmitting}
             required
           />
         </div>
